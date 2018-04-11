@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const {GraphQLObjectType, GraphQLList, GraphQLString} = graphql;
-const UserType = require('./user_type');
-const PollType = require('./polls_type');
+const UserType = require('./userType');
+const PollType = require('./pollsType');
 
 const mongoose = require('mongoose');
 const PollModel = mongoose.model('polls');

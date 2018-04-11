@@ -1,5 +1,5 @@
 const socket = require('./socket');
-const EventType = require('./types/polls_type');
+const EventType = require('./types/pollsType');
 
 module.exports = {
   type: EventType,

@@ -40,7 +40,7 @@ class CreatePoll extends React.Component {
           <div className="errors">
             {this.state.errors.map(error => <div key={error}>{error}</div>)}
           </div>
-          <Button color="primary" size="lg" block>Create new Poll</Button>
+          <Button color="primary" size="lg" block>Create Question</Button>
           <br/>
         </form>
       </Row>

@@ -3,9 +3,9 @@ const {
   GraphQLObjectType,
   GraphQLString
 } = graphql;
-const UserType = require('./types/user_type');
+const UserType = require('./types/userType');
 const AuthService = require('../services/auth');
-const PollType = require('./types/polls_type');
+const PollType = require('./types/pollsType');
 const mongoose = require('mongoose');
 const PollModel = mongoose.model('polls');
 const socket = require('../schema/socket');

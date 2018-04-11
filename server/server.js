@@ -12,13 +12,13 @@ const cors = require('cors');
 const models = require('./models');
 const schema = require('./schema/schema');
 
+
 const app = express();
 const PORT = 4000;
 
 app.use('*', cors({origin: `http://localhost:${PORT}`, credentials: true}));
 
 const MONGO_URI = 'mongodb://localhost:27017/polls';
-
 mongoose.Promise = global.Promise;
 mongoose.connect(MONGO_URI);
 mongoose.connection
