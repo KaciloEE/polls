@@ -2,6 +2,6 @@ const socket = require('./socket');
 const EventType = require('./types/polls_type');
 
 module.exports = {
-    type: EventType,
-    subscribe: () => socket.asyncIterator('EVENT_CREATED')
+  type: EventType,
+  subscribe: () => socket.asyncIterator('EVENT_CREATED')
 };

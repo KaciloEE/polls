@@ -1,6 +1,5 @@
-
 const graphql = require('graphql');
-const { GraphQLObjectType, GraphQLID, GraphQLList, GraphQLNonNull, GraphQLString } = graphql;
+const {GraphQLObjectType, GraphQLList, GraphQLString} = graphql;
 const UserType = require('./user_type');
 const PollType = require('./polls_type');
 
@@ -17,29 +16,29 @@ const RootQueryType = new GraphQLObjectType({
       }
     },
     polls: {
-      type: new GraphQLList(PollType),             
-      resolve(args) {        
+      type: new GraphQLList(PollType),
+      resolve(args) {
         return PollModel.find({});
       }
     },
     myQuestion: {
-      type: new GraphQLList(PollType),      
-      resolve(parentValue, args, req) {        
+      type: new GraphQLList(PollType),
+      resolve(parentValue, args, req) {
         return PollModel.find({"author": req.user.id})
       }
     },
     answers: {
-      type: new GraphQLList(PollType),      
-      resolve(parentValue, args, req) {        
+      type: new GraphQLList(PollType),
+      resolve(parentValue, args, req) {
         return PollModel.find({answer: req.user.id})
       }
     },
     searchPoll: {
-      type: new GraphQLList(PollType),      
+      type: new GraphQLList(PollType),
       args: {
-        title:  { type: GraphQLString }
-    },
-      resolve(parentValue, args, req) {        
+        title: {type: GraphQLString}
+      },
+      resolve(parentValue, args, req) {
         return PollModel.find({"title": args.title})
       }
     }
