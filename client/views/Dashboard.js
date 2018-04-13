@@ -1,19 +1,70 @@
 import React from 'react';
+import {withApollo} from 'react-apollo';
+import query from '../queries/Search';
+import {Container, Row, Button, Form, Input, Col, Alert} from 'reactstrap';
+import ListQuestion from '../containers/ListQuestion';
 import Header from '../components/Header';
 import CreatePoll from '../components/CreatePoll';
-import ListQuestion from '../components/ListQuestion';
-import {Container} from 'reactstrap';
 
-const Dashboard = (props) => {
-  return (
-    <Container>
-      <Header/>
-      <br/>
-      <CreatePoll/>
-      <br/>
-      <ListQuestion/>
-    </Container>
-  );
+
+class Dashboard extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {search: '', filters: [], visible: false};
+
+    this._executeSearch = this._executeSearch.bind(this);
+    this.onDismiss = this.onDismiss.bind(this);
+  }
+
+  onDismiss() {
+    this.setState({visible: false});
+  }
+
+  _executeSearch(e) {
+    e.preventDefault();
+    this.props.client.query({
+      query: query,
+      variables: {"title": this.state.search},
+    }).then(res => {
+      const visible = res.data.searchPoll.length ? false : true
+      this.setState({filters: res.data.searchPoll, search: '', visible})
+    })
+
+  }
+
+  render() {
+
+    return (
+      <Container>
+        <Header/>
+        <Row>
+          <Col xs="6" sm="6">
+            <CreatePoll/>
+          </Col>
+          <Col xs="6" sm="2"></Col>
+          <Col sm="4">
+            <Form onSubmit={this._executeSearch}>
+              <Input
+
+                bsSize="lg"
+                type="search"
+                placeholder="Search"
+                value={this.state.search}
+                onChange={e => this.setState({search: e.target.value})}
+              />
+              <Button color="primary" size="lg" block> Search...</Button>
+              <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
+                Search not found!
+              </Alert>
+            </Form>
+          </Col>
+          <ListQuestion filterQuestion={this.state.filters}/>
+        </Row>
+      </Container>
+    );
+
+  }
 }
 
-export default Dashboard;
+export default withApollo(Dashboard);

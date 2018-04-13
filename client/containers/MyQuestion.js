@@ -1,12 +1,13 @@
 import React from 'react';
 import {graphql} from 'react-apollo';
-import query from '../queries/Questions';
+import query from '../queries/MyQuestions';
 import mutationVote from '../mutations/Vote';
 import {Row} from 'reactstrap';
-import Question from './Question';
+
+import Question from '../components/Question';
 
 
-class ListQuestion extends React.Component {
+class MyQuestion extends React.Component {
   constructor(props) {
     super(props);
 
@@ -26,7 +27,8 @@ class ListQuestion extends React.Component {
   }
 
   render() {
-    const {polls, user} = this.props.data
+    const polls = this.props.data.myQuestion
+    const user = this.props.data.user
 
     return (
       <Row>
@@ -37,5 +39,5 @@ class ListQuestion extends React.Component {
 }
 
 export default graphql(mutationVote)(
-  graphql(query)(ListQuestion)
+  graphql(query)(MyQuestion)
 );

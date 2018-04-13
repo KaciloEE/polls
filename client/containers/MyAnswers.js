@@ -2,9 +2,10 @@ import React from 'react';
 import {graphql} from 'react-apollo';
 import query from '../queries/MyAnswers';
 import {Row} from 'reactstrap';
-import Question from './Question';
+import Question from '../components/Question';
 
 class MyAnswers extends React.Component {
+
   constructor(props) {
     super(props);
 

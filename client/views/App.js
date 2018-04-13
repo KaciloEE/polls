@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 import Header from '../components/Header';
-import {Container, Jumbotron } from 'reactstrap';
+import {Container, Jumbotron} from 'reactstrap';
 
 const App = (props) => {
   return (

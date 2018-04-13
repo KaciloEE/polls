@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-import MyAnswers from '../components/MyAnswers';
+import MyAnswers from '../containers/MyAnswers';
 import {Container} from 'reactstrap';
 
 const Answers = (props) => {

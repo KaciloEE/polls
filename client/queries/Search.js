@@ -1,8 +1,8 @@
 import gql from 'graphql-tag';
 
 export default gql`
-{
-  searchPoll(title:String) {
+query searchPoll($title: String){
+  searchPoll(title: $title) {
     id
     title
     author

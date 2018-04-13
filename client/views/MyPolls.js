@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from '../components/Header';
-import MyQuestion from '../components/MyQuestion';
+import MyQuestion from '../containers/MyQuestion';
 import {Container} from 'reactstrap';
 
 const MyPolls = (props) => {

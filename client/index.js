@@ -13,9 +13,9 @@ import Dashboard from './views/Dashboard';
 import MyPolls from './views/MyPolls';
 import Answers from './views/Answers';
 
-import LoginForm from './components/LoginForn';
-import SignupForm from './components/SignupForm';
-import requireAuth from './components/requireAuth';
+import LoginForm from './containers/LoginForn';
+import SignupForm from './containers/SignupForm';
+import requireAuth from './containers/requireAuth';
 
 
 const networkInterface = createNetworkInterface({

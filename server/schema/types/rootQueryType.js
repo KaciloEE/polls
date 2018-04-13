@@ -2,7 +2,7 @@ const graphql = require('graphql');
 const {GraphQLObjectType, GraphQLList, GraphQLString} = graphql;
 const UserType = require('./userType');
 const PollType = require('./pollsType');
-
+const _ = require('lodash');
 const mongoose = require('mongoose');
 const PollModel = mongoose.model('polls');
 
@@ -18,7 +18,7 @@ const RootQueryType = new GraphQLObjectType({
     polls: {
       type: new GraphQLList(PollType),
       resolve(args) {
-        return PollModel.find({});
+        return PollModel.find({})
       }
     },
     myQuestion: {
@@ -39,7 +39,8 @@ const RootQueryType = new GraphQLObjectType({
         title: {type: GraphQLString}
       },
       resolve(parentValue, args, req) {
-        return PollModel.find({"title": args.title})
+        console.log('------', args)
+        return PollModel.find({title: args.title})
       }
     }
   }
