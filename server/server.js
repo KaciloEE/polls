@@ -1,5 +1,4 @@
 const express = require('express');
-const mongoose = require('mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const MongoStore = require('connect-mongo')(session);
@@ -11,32 +10,26 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const models = require('./models');
 const schema = require('./schema/schema');
+const config = require('./config');
+require('./db');
 
-
+const {app: {PORT}, db: {host, port, name}} = config;
 const app = express();
-const PORT = 4000;
 
 app.use('*', cors({origin: `http://localhost:${PORT}`, credentials: true}));
-
-const MONGO_URI = 'mongodb://localhost:27017/polls';
-mongoose.Promise = global.Promise;
-mongoose.connect(MONGO_URI);
-mongoose.connection
-  .once('open', () => console.log('Connected to Mongo instance.'))
-  .on('error', error => console.log('Error connecting to Mongo:', error));
-
 app.use(session({
   resave: true,
   saveUninitialized: true,
   secret: 'aaabbbccc',
   store: new MongoStore({
-    url: MONGO_URI,
+    url: `mongodb://${host}:${port}/${name}`,
     autoReconnect: true
   })
 }));
 
 app.use(passport.initialize());
 app.use(passport.session());
+
 app.use('/graphql', bodyParser.json(), (req, res, next) => {
   return graphqlExpress({
     schema,

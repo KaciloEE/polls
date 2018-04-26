@@ -18,7 +18,7 @@ class CreatePoll extends React.Component {
     this.props.mutate({
       variables: {title: this.state.question, tags: this.state.tags},
       refetchQueries: [{query}]
-    }).then(() => this.setState({question: ''}))
+    }).then(() => this.setState({question: '', tags: []}))
       .catch(res => {
         const errors = res.graphQLErrors.map(error => error.message);
         this.setState({errors});

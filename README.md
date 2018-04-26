@@ -2,8 +2,12 @@
 
 ## Install and Setup
 
-// Replace with your mongoDB URI (server/server.js)
-const MONGO_URI = 'mongodb://localhost:27017/databasename';
+// Replace with your mongoDB URI (server/config.js)
+db: {
+    host: 'localhost',
+    port: 27017,
+    name: 'polls'
+  }
 
 Run the command below in the root and client folder to install node
 
