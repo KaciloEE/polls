@@ -5,6 +5,7 @@ export default gql`
   polls {
     id
     title
+    tags
     author
     authorName
     date

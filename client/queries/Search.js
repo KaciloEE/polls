@@ -5,6 +5,7 @@ query searchPoll($title: String){
   searchPoll(title: $title) {
     id
     title
+    tags
     author
     authorName
     date

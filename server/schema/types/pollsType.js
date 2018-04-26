@@ -26,7 +26,8 @@ const PollType = new GraphQLObjectType({
     date: {type: GraphQLString},
     pollTotal: {type: GraphQLInt},
     option: {type: new GraphQLList(selectType)},
-    answer: {type: new GraphQLList(GraphQLID)}
+    answer: {type: new GraphQLList(GraphQLID)},
+    tags: {type: new GraphQLList(GraphQLString)},
   }
 });
 

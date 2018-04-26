@@ -38,8 +38,7 @@ const RootQueryType = new GraphQLObjectType({
       args: {
         title: {type: GraphQLString}
       },
-      resolve(parentValue, args, req) {
-        console.log('------', args)
+      resolve(parentValue, args, req) {        
         return PollModel.find({title: args.title})
       }
     }

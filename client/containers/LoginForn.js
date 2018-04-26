@@ -15,7 +15,6 @@ class LoginForm extends React.Component {
   }
 
   componentWillUpdate(nextProps) {
-    console.log(this.props, nextProps);
     if (!this.props.data.user && nextProps.data.user) {
       hashHistory.push('/dashboard');
     }

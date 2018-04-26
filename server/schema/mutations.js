@@ -1,7 +1,7 @@
 const graphql = require('graphql');
 const {
   GraphQLObjectType,
-  GraphQLString
+  GraphQLString, GraphQLList
 } = graphql;
 const UserType = require('./types/userType');
 const AuthService = require('../services/auth');
@@ -16,11 +16,12 @@ const mutation = new GraphQLObjectType({
     createPoll: {
       type: PollType,
       args: {
-        title: {type: GraphQLString}
+        title: {type: GraphQLString},
+        tags: {type: new GraphQLList(GraphQLString)},
       },
-      resolve: (root, {title}, req) => {
+      resolve: (root, {title, tags}, req) => {        
         return new Promise((resolve, reject) => {
-          const data = {title, author: req.user.id, authorName: req.user.name}
+          const data = {title, tags, author: req.user.id, authorName: req.user.name}
           const newEvent = new PollModel(data);
           newEvent
             .save()

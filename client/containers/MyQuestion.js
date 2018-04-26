@@ -4,9 +4,7 @@ import query from '../queries/MyQuestions';
 import mutationVote from '../mutations/Vote';
 import CreatePoll from '../components/CreatePoll';
 import {Row, Col} from 'reactstrap';
-
 import Question from '../components/Question';
-import { DIRECTIVE } from 'graphql/language/kinds';
 
 
 class MyQuestion extends React.Component {
@@ -34,15 +32,15 @@ class MyQuestion extends React.Component {
 
     return (
       <div>
-      <Row>
-        <Col xs="6" sm="6">
+        <Row>
+          <Col>
             <CreatePoll/>
           </Col>
-      </Row> 
-      <Row>
-        <Question errors={this.state.errors} data={polls} onVote={this.onVote} user={user}/>
-      </Row>
-      </div> 
+        </Row>
+        <Row>
+          <Question errors={this.state.errors} data={polls} onVote={this.onVote} user={user}/>
+        </Row>
+      </div>
     );
   }
 }

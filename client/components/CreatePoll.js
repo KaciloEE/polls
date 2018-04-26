@@ -1,22 +1,22 @@
 import React from 'react';
 import {graphql} from 'react-apollo';
-//import query from '../queries/Questions';
 import query from '../queries/MyQuestions';
 import mutationPoll from '../mutations/Poll';
 import {Row, Input, Button} from 'reactstrap';
+import TagsInput from 'react-tagsinput';
 
 
 class CreatePoll extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {errors: [], question: ''};
+    this.state = {errors: [], question: '', tags: []};
   }
 
   onSubmit(e) {
     e.preventDefault()
     this.props.mutate({
-      variables: {title: this.state.question},
+      variables: {title: this.state.question, tags: this.state.tags},
       refetchQueries: [{query}]
     }).then(() => this.setState({question: ''}))
       .catch(res => {
@@ -25,10 +25,14 @@ class CreatePoll extends React.Component {
       });
   }
 
+  handleChange(tags) {
+    this.setState({tags})
+  }
+
   render() {
     return (
       <Row>
-        <form onSubmit={this.onSubmit.bind(this)} className="col s6">
+        <form onSubmit={this.onSubmit.bind(this)} className="col">
           <div className="input-field">
             <Input
               required
@@ -37,6 +41,7 @@ class CreatePoll extends React.Component {
               value={this.state.question}
               onChange={e => this.setState({question: e.target.value})}
             />
+            <TagsInput value={this.state.tags} onChange={this.handleChange.bind(this)}/>
           </div>
           <div className="errors">
             {this.state.errors.map(error => <div key={error}>{error}</div>)}

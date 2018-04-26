@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const PollSchema = new Schema({
   title: String,
+  tags: [],
   author: {type: Schema.Types.ObjectId},
   authorName: String,
   date: {type: Date, default: Date.now},

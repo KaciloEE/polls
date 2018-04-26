@@ -5,6 +5,7 @@ export default gql`
   answers {
     id
     title
+    tags
     author
     authorName
     date

@@ -25,37 +25,36 @@ class Search extends React.Component {
     this.props.client.query({
       query: query,
       variables: {"title": this.state.search},
-    }).then(res => {      
+    }).then(res => {
       const visible = res.data.searchPoll.length ? false : true
       this.setState({filters: res.data.searchPoll, visible})
     })
   }
 
-  render() {    
-
+  render() {
     return (
       <Container>
         <Header/>
-        <Row>                    
+        <Row>
           <Col>
             <Form inline onSubmit={this._executeSearch}>
-              <Input   
-                size="60"             
+              <Input
+                size="60"
                 bsSize="lg"
                 type="search"
                 placeholder="Search"
                 value={this.state.search}
                 onChange={e => this.setState({search: e.target.value})}
               />&nbsp;
-              <Button outline color="primary" size="lg"> Search...</Button>              
+              <Button outline color="primary" size="lg"> Search...</Button>
             </Form>
           </Col>
-          </Row>
-          <br/>  
-          <Row>
+        </Row>
+        <br/>
+        <Row>
           <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
-                Search not found!
-              </Alert>
+            Search not found!
+          </Alert>
           <ListQuestion dataList={this.state.filters}/>
         </Row>
       </Container>
