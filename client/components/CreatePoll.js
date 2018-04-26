@@ -1,6 +1,7 @@
 import React from 'react';
 import {graphql} from 'react-apollo';
-import query from '../queries/Questions';
+//import query from '../queries/Questions';
+import query from '../queries/MyQuestions';
 import mutationPoll from '../mutations/Poll';
 import {Row, Input, Button} from 'reactstrap';
 

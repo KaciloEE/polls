@@ -57,6 +57,9 @@ class Header extends React.Component {
                 <Link to="/dashboard">Dashboard</Link>
               </DropdownItem>
               <DropdownItem>
+                <Link to="/search">Search</Link>
+              </DropdownItem>
+              <DropdownItem>
                 <Link to="/mypolls">My Question</Link>
               </DropdownItem>
               <DropdownItem>

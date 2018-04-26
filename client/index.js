@@ -10,6 +10,7 @@ import {Router, hashHistory, Route} from 'react-router';
 
 import App from './views/App';
 import Dashboard from './views/Dashboard';
+import Search from './views/Search';
 import MyPolls from './views/MyPolls';
 import Answers from './views/Answers';
 
@@ -46,6 +47,7 @@ const Root = () => {
         <Route path="signup" component={SignupForm}/>
         <Route path="login" component={LoginForm}/>
         <Route path="dashboard" component={requireAuth(Dashboard)}/>
+        <Route path="search" component={requireAuth(Search)}/>
         <Route path="mypolls" component={requireAuth(MyPolls)}/>
         <Route path="answers" component={requireAuth(Answers)}/>
       </Router>

@@ -10,7 +10,11 @@ class MyAnswers extends React.Component {
     super(props);
 
     this.state = {errors: []};
-  }
+  }  
+
+  componentWillReceiveProps(nextProps) {
+    this.props.data.refetch()
+  }  
 
   render() {
     const polls = this.props.data.answers

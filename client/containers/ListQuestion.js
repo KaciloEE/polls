@@ -26,12 +26,12 @@ class ListQuestion extends React.Component {
   }
 
   render() {
-    const {polls, user} = this.props.data
-    const {filterQuestion} = this.props
+    const {user} = this.props.data
+    const {dataList} = this.props
 
     return (
       <Row>
-        <Question errors={this.state.errors} data={filterQuestion.length ? filterQuestion : polls} onVote={this.onVote}
+        <Question errors={this.state.errors} data={dataList} onVote={this.onVote}
                   user={user}/>
       </Row>
     );

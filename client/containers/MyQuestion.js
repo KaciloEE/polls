@@ -2,9 +2,11 @@ import React from 'react';
 import {graphql} from 'react-apollo';
 import query from '../queries/MyQuestions';
 import mutationVote from '../mutations/Vote';
-import {Row} from 'reactstrap';
+import CreatePoll from '../components/CreatePoll';
+import {Row, Col} from 'reactstrap';
 
 import Question from '../components/Question';
+import { DIRECTIVE } from 'graphql/language/kinds';
 
 
 class MyQuestion extends React.Component {
@@ -31,9 +33,16 @@ class MyQuestion extends React.Component {
     const user = this.props.data.user
 
     return (
+      <div>
+      <Row>
+        <Col xs="6" sm="6">
+            <CreatePoll/>
+          </Col>
+      </Row> 
       <Row>
         <Question errors={this.state.errors} data={polls} onVote={this.onVote} user={user}/>
       </Row>
+      </div> 
     );
   }
 }
