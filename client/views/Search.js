@@ -50,7 +50,13 @@ class Search extends React.Component {
             </Form>
           </Col>
         </Row>
-
+        <Row>
+          <Col>
+            <Button disabled={!this.state.search}
+                    onClick={(e) => this.setState({search: '', filters: [], visible: false})}
+                    color="info">Clear</Button>
+          </Col>
+        </Row>
         <br/>
         <Row>
           <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
