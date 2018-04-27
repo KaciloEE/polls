@@ -39,8 +39,16 @@ const RootQueryType = new GraphQLObjectType({
         title: {type: GraphQLString}
       },
       resolve(parentValue, args, req) {
-        //return PollModel.find({$or: [{title: {$regex: args.title, $options: 'i'}}, {tags: {$regex: args.title, $options: 'i'}}]})
-        return PollModel.find({$or: [{title: args.title}, {tags: args.title }]})
+        return PollModel.find().or([{title: {$regex: args.title, $options: 'i'}}, {
+          tags: {
+            $regex: args.title,
+            $options: 'i'
+          }
+        }])
+          .then(polls => polls)
+          .catch(error => {
+            console.log('error', error)
+          })
       }
     }
   }

@@ -46,10 +46,11 @@ class Search extends React.Component {
                 value={this.state.search}
                 onChange={e => this.setState({search: e.target.value})}
               />&nbsp;
-              <Button outline color="primary" size="lg"> Search...</Button>
+              <Button disabled={!this.state.search} color="primary" size="lg"> Search...</Button>
             </Form>
           </Col>
         </Row>
+
         <br/>
         <Row>
           <Alert color="danger" isOpen={this.state.visible} toggle={this.onDismiss}>
