@@ -13,7 +13,7 @@ import {
   UncontrolledDropdown,
   DropdownToggle,
   DropdownMenu,
-  DropdownItem
+  DropdownItem, NavItem, NavLink
 } from 'reactstrap';
 
 
@@ -48,24 +48,25 @@ class Header extends React.Component {
     if (user) {
       return (
         <Nav className="ml-auto" navbar>
+          <ul className="nav justify-content-end nav-pills">
+            <li className="nav-item">
+              <Link className="nav-link" to='/dashboard' activeClassName='active'>Dashboard</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to='/search' activeClassName='active'>Search</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to='/mypolls' activeClassName='active'>My Question</Link>
+            </li>
+            <li className="nav-item">
+              <Link className="nav-link" to='/answers' activeClassName='active'>My Answers</Link>
+            </li>
+          </ul>
           <UncontrolledDropdown nav inNavbar>
             <DropdownToggle nav caret>
               Options
             </DropdownToggle>
             <DropdownMenu right>
-              <DropdownItem>
-                <Link to="/dashboard">Dashboard</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to="/search">Search</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to="/mypolls">My Question</Link>
-              </DropdownItem>
-              <DropdownItem>
-                <Link to="/answers">My Answers</Link>
-              </DropdownItem>
-              <DropdownItem divider/>
               <DropdownItem>
                 <li><a onClick={this.onLogoutClick.bind(this)}>Logout</a></li>
               </DropdownItem>
